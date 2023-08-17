@@ -1,0 +1,7 @@
+<h2>All Feedbacks</h2>
+<ul>
+  <li *ngFor="let feedback of feedbacks">
+    <strong>Rating:</strong> {{ feedback.rating_value }}
+    <p>{{ feedback.comment }}</p>
+  </li>
+</ul>

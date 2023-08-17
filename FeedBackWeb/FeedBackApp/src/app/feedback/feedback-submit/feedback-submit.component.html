@@ -1,0 +1,11 @@
+<form [formGroup]="feedbackForm" (ngSubmit)="submitFeedback()">
+  <div>
+    <label>Rating:</label>
+    <input type="number" formControlName="rating_value">
+  </div>
+  <div>
+    <label>Comment:</label>
+    <textarea formControlName="comment"></textarea>
+  </div>
+  <button type="submit">Submit Feedback</button>
+</form>
