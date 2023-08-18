@@ -1,5 +1,6 @@
 package org.feedback.controller;
 
+import org.feedback.model.SuccessResponse;
 import org.feedback.model.User;
 import org.feedback.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,17 @@ public class LoginController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody User loginRequest) {
+    public ResponseEntity<SuccessResponse> authenticateUser(@RequestBody User loginRequest) {
 
         User user = userService.findByUsername(loginRequest.getName());
-        if(loginRequest.getPassword().equals(user.getPassword()))
-            return new ResponseEntity<>("Success", HttpStatus.valueOf(200));
-        else
-            return new ResponseEntity<>("Error", HttpStatus.valueOf(400));
+        SuccessResponse su = new SuccessResponse();
+        if(loginRequest.getPassword().equals(user.getPassword())) {
+            su.setSuccess("Success");
+            return new ResponseEntity<>(su, HttpStatus.valueOf(200));
+        }
+        else {
+            su.setSuccess("Error");
+            return new ResponseEntity<>(su, HttpStatus.valueOf(400));
+        }
     }
 }

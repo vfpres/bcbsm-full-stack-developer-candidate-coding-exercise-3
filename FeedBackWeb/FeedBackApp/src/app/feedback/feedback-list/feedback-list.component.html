@@ -1,7 +1,12 @@
 <h2>All Feedbacks</h2>
 <ul>
   <li *ngFor="let feedback of feedbacks">
-    <strong>Rating:</strong> {{ feedback.rating_value }}
+    <strong>Username: {{feedback.user.name}}</strong>
+    <br/><strong>Date: {{feedback.date | date:'h:mm:a'}}</strong>
+    <br/><strong>Rating:</strong> {{ feedback.ratingValue }}
     <p>{{ feedback.comment }}</p>
+
   </li>
 </ul>
+
+<button (click)="navigateToSubmit()">Submit Feedback</button>

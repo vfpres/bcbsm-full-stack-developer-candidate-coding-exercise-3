@@ -20,13 +20,18 @@ public class FeedbackService {
     private UserRepository userRepository;
 
     public User getUser(String user){
-        return userRepository.findByName(user);
+        User u = userRepository.findByName(user);
+        System.out.println(u);
+        return u;
+
     }
     public Feedback saveFeedback(FeedbackDTO feedbackDTO) {
         Feedback feedback = new Feedback();
         feedback.setRatingValue(feedbackDTO.getRatingValue());
         feedback.setComment(feedbackDTO.getComment());
-        feedback.setUser(getUser(feedbackDTO.getUsername()));
+        User u = getUser(feedbackDTO.getUsername());
+        System.out.println(u);
+        feedback.setUser(u);
         feedback.setDate(new Date());
         return feedbackRepository.save(feedback);
     }

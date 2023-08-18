@@ -7,8 +7,6 @@ import { FeedbackListComponent } from './feedback-list/feedback-list.component';
 
 @NgModule({
   declarations: [
-    FeedbackSubmitComponent,
-    FeedbackListComponent
   ],
   imports: [
     CommonModule,

@@ -20,13 +20,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/**").hasRole(Role.ADMIN.name())
-                .antMatchers("/user/**").hasRole(Role.USER.name())
-                .antMatchers("/login").permitAll()  // permit login and registration for all
-                .anyRequest().authenticated()  // all other requests need to be authenticated
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll();
+                .antMatchers("/feedback/user/**").hasRole(Role.ADMIN.name())
+                .antMatchers("/feedback/user/**").hasRole(Role.USER.name())
+                .antMatchers("/auth/login").permitAll();  // permit login and registration for
     }
 }

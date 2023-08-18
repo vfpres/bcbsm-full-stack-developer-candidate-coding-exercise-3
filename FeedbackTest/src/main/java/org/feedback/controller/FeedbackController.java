@@ -3,6 +3,7 @@ package org.feedback.controller;
 import org.feedback.DTO.FeedbackDTO;
 import org.feedback.model.Feedback;
 import org.feedback.model.Role;
+import org.feedback.model.SuccessResponse;
 import org.feedback.model.User;
 import org.feedback.repository.FeedbackRepository;
 import org.feedback.repository.UserRepository;
@@ -25,9 +26,11 @@ public class FeedbackController {
     FeedbackService feedbackService;
 
     @PostMapping
-    public ResponseEntity<String> submitFeedback(@RequestBody FeedbackDTO feedback) {
+    public ResponseEntity<SuccessResponse> submitFeedback(@RequestBody FeedbackDTO feedback) {
         feedbackService.saveFeedback(feedback);
-        return ResponseEntity.ok("Feedback submitted successfully");
+        SuccessResponse su = new SuccessResponse();
+        su.setSuccess("Feedback Success");
+        return ResponseEntity.ok(su);
     }
 
     @GetMapping

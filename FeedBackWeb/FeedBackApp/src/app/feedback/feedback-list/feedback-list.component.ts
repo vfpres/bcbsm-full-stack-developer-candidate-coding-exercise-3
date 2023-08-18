@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../../feedback.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-feedback-list',
@@ -10,7 +11,7 @@ export class FeedbackListComponent implements OnInit {
   feedbacks: any[] = [];
   username: string | null = '';
 
-  constructor(private feedbackService: FeedbackService) { }
+  constructor(private feedbackService: FeedbackService, private router: Router) { }
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('loggedInUsername');
@@ -25,8 +26,15 @@ export class FeedbackListComponent implements OnInit {
       safeUsername = 'DefaultUsername';
     }
     this.feedbackService.getUserFeedback(safeUsername).subscribe(
-      data => this.feedbacks = data,
+      data => {
+        this.feedbacks = data
+        console.log(data);
+      },
       error => console.error('Error fetching feedbacks:', error)
     );
+  }
+
+  navigateToSubmit() {
+    this.router.navigate(['/feedback-submit']);
   }
 }
