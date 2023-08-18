@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';       // For using [(ngModel)]
-import { HttpClientModule } from '@angular/common/http'; // For making HTTP requests
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component'; // Our Login component
+import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { FeedbackListComponent } from './feedback/feedback-list/feedback-list.component';
@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],  // No services here, but you might add them later
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
